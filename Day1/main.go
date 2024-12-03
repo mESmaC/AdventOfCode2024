@@ -17,7 +17,7 @@ func main() {
 * Variable count to count from 0-5
 * Bool to switch arrays
 * iterate through the sterilized text with a for loop, every five characters switch to a new array
-* print arrays to their own files
+* 
  */
 
 func sterilize() {
