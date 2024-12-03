@@ -17,7 +17,7 @@ func main() {
 * Variable count to count from 0-5
 * Bool to switch arrays
 * iterate through the sterilized text with a for loop, every five characters switch to a new array
-* 
+*
  */
 
 func sterilize() {
@@ -179,5 +179,48 @@ func sortAndCalc(l1 []int, l2 []int) {
 		sod += abs(sl1[i] - sl2[i])
 	}
 
-	fmt.Println(sod)
+	fmt.Println("Part 1 Solution:", sod)
+
+	parTwo(sl1, sl2)
+
+}
+
+/* Part Two
+* slice sim = how often each number on the left list appears in the right list
+* or sim can be a regular int that counts
+* then multiple the indecies of sim by the corresponding indecies on the left list
+* then add up all the numbers in the left list
+ */
+
+/* if l1 at j (init at 0) is equal to the value of l2 at i then increment sim
+*  this finds all the instances of l1[j] in the left list and saves the count to sim
+*
+ */
+
+func parTwo(l1 []int, l2 []int) {
+	var simi []int
+	sim := 0
+	sum := 0
+	j := 0
+	i := 0
+
+	for j < len(l1) {
+		if i < len(l2) {
+			if l1[j] == l2[i] {
+				sim++
+			}
+			i++
+		} else {
+			simi = append(simi, sim)
+			j++
+			sim = 0
+			i = 0
+		}
+	}
+
+	for k := 0; k < len(simi); k++ {
+		sum += (l1[k] * simi[k])
+	}
+
+	fmt.Println("Part 2 Solution: ", sum)
 }
